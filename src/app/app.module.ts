@@ -9,6 +9,7 @@ import { ContactComponent } from './contact/contact.component';
 import { PanierComponent } from './panier/panier.component';
 import { LoginComponent } from './login/login.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SubscribeComponent } from './subscribe/subscribe.component';
     ContactComponent,
     PanierComponent,
     LoginComponent,
-    SubscribeComponent
+    SubscribeComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
