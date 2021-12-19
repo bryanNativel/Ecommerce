@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {getProduct} from "./mock";
+import {filter, map, switchMap} from "rxjs";
 
 @Component({
   selector: 'app-product',
@@ -12,7 +13,18 @@ export class ProductComponent implements OnInit {
   public products$ = getProduct()
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.filterProduct()
+  }
+
+   filterProduct(){
+
+    this.products$.pipe(
+      map((products)  => products.category),
+
+    )
+
+  }
 
 }
 

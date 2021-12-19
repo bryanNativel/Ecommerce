@@ -1,6 +1,6 @@
 import {of} from "rxjs";
 
- let products : Array<Product> = [{
+ const  products = [{
   id: "1",
   name: "Orange",
   stock : 69,
@@ -16,7 +16,8 @@ import {of} from "rxjs";
     pic: "../assets/images/fruit/p5.png",
     producteur : { name : "Gervais"},
     category : "fruit"
-  },  {id: "3",
+  },
+   {id: "3",
     name: "Pomme",
     stock : 10,
     price : 4 ,
@@ -92,6 +93,54 @@ import {of} from "rxjs";
      producteur : { name : "Laurent"},
      category : "fish"
    },
+   {id: "13",
+     name: "Pain au chocolat",
+     stock : 68,
+     price : 1 ,
+     pic: "../assets/images/pastry/painAuCho.png",
+     producteur : { name : "Laurent"},
+     category : "pastry"
+   },
+   {id: "14",
+     name: "Pain au raisin",
+     stock : 18,
+     price : 1 ,
+     pic: "../assets/images/pastry/painAuR.png",
+     producteur : { name : "Gervais"},
+     category : "pastry"
+   },
+   {id: "15",
+     name: "Pain",
+     stock :14,
+     price : 0.50 ,
+     pic: "../assets/images/pastry/pain.png",
+     producteur : { name : "Laurent"},
+     category : "pastry"
+   },
+   {id: "16",
+     name: "Tulip",
+     stock : 68,
+     price : 1 ,
+     pic: "../assets/images/flower/tulip.png",
+     producteur : { name : "Laurent"},
+     category : "flower"
+   },
+   {id: "17",
+     name: "Rose",
+     stock : 18,
+     price : 1 ,
+     pic: "../assets/images/flower/rose.png",
+     producteur : { name : "Gervais"},
+     category : "flower"
+   },
+   {id: "18",
+     name: "Muguet",
+     stock :14,
+     price : 0.50 ,
+     pic: "../assets/images/flower/muguet.png",
+     producteur : { name : "Laurent"},
+     category : "flower"
+   }
 ]
 
 
@@ -100,6 +149,7 @@ import {of} from "rxjs";
 export function getProduct(){
   return of(products)
 }
+
 
   interface Product {
     id: string
