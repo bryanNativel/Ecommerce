@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {getProduct} from "./mock";
-import {filter, map, switchMap} from "rxjs";
+import {from, map, Observable, of} from "rxjs";
+import {Product, products} from "./mock";
+import {basket} from "../panier/mock";
 
 @Component({
   selector: 'app-product',
@@ -10,22 +11,22 @@ import {filter, map, switchMap} from "rxjs";
 
 
 export class ProductComponent implements OnInit {
-  public products$ = getProduct()
+  public productsBrut = products
+  public product$: Observable<Product[]> | undefined
   constructor() {}
 
   ngOnInit(): void {
-    this.filterProduct()
+     this.filterProduct("all")
   }
 
-   filterProduct(){
-
-    this.products$.pipe(
-      map((products)  => products.category),
-
-    )
-
+   filterProduct(category:string){
+    this.product$ = category === "all" ? of(this.productsBrut)  : of(this.productsBrut.filter((products)  => products.category === category))
   }
-
+  addBasket(product : Product){
+      // @ts-ignore
+    basket.push(product)
+      console.log(basket)
+  }
 }
 
 

@@ -1,6 +1,6 @@
-import {of} from "rxjs";
+import {from} from "rxjs";
 
- const  products = [{
+ export const products : Product[] = [{
   id: "1",
   name: "Orange",
   stock : 69,
@@ -143,15 +143,7 @@ import {of} from "rxjs";
    }
 ]
 
-
-
-
-export function getProduct(){
-  return of(products)
-}
-
-
-  interface Product {
+  export interface Product {
     id: string
     name: string
     category: string

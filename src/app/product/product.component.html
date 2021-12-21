@@ -9,27 +9,27 @@
     </div>
     <ul class="nav justify-content-center">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Tout</a>
+        <button class="nav-link active" (click)="filterProduct('all')" aria-current="page" >Tout</button>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Fruit et Légume</a>
+        <button class="nav-link" (click)="filterProduct('fruit')" >Fruit et Légume</button>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Viande</a>
+        <button class="nav-link" (click)="filterProduct('meat')">Viande</button>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" tabindex="-1">Poisson</a>
+        <button class="nav-link" (click)="filterProduct('fish')" tabindex="-1">Poisson</button>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" tabindex="-1">Fleur</a>
+        <button class="nav-link" (click)="filterProduct('flower')" tabindex="-1">Fleur</button>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" tabindex="-1">Boulangerie</a>
+        <button class="nav-link" (click)="filterProduct('pastry')" tabindex="-1">Boulangerie</button>
       </li>
     </ul>
     <!--Produit-->
     <div class="row ">
-      <div class="col-sm-6 col-lg-4" *ngFor="let product of products$ | async">
+      <div class="col-sm-6 col-lg-4" *ngFor="let product of product$ | async">
         <div class="box">
           <div class="img-box">
             <img src="{{product.pic}}" alt="">
@@ -47,7 +47,7 @@
                 {{product.price}}<span>€</span>
               </h6>
               <div class="row mt-1">
-                <button type="button" class="btn btn-success">Ajouter</button>
+                <button type="button" (click)="addBasket(product)" class="btn btn-success">Ajouter</button>
               </div>
             </div>
           </div>
