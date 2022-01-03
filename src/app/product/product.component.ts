@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {from, map, Observable, of} from "rxjs";
+import {Observable, of} from "rxjs";
 import {Product, products} from "./mock";
-import {basket} from "../panier/mock";
+import {CacheServieService} from "../service/cache-servie.service";
+import {providerDef} from "@angular/compiler/src/view_compiler/provider_compiler";
 
 @Component({
   selector: 'app-product',
@@ -13,7 +14,7 @@ import {basket} from "../panier/mock";
 export class ProductComponent implements OnInit {
   public productsBrut = products
   public product$: Observable<Product[]> | undefined
-  constructor() {}
+  constructor(private cacheService: CacheServieService) {}
 
   ngOnInit(): void {
      this.filterProduct("all")
@@ -23,9 +24,18 @@ export class ProductComponent implements OnInit {
     this.product$ = category === "all" ? of(this.productsBrut)  : of(this.productsBrut.filter((products)  => products.category === category))
   }
   addBasket(product : Product){
-      // @ts-ignore
-    basket.push(product)
-      console.log(basket)
+    let tmpBasquet = this.cacheService.get()
+    console.log(tmpBasquet)
+    if(tmpBasquet == null){
+      this.cacheService.post(product)
+    }else{
+      if(tmpBasquet.findIndex((p:Product) => p.id == product.id) == -1){
+        this.cacheService.post(product)
+      }else{
+        console.log('oui')
+      }
+
+    }
   }
 }
 

@@ -10,6 +10,7 @@ import { PanierComponent } from './panier/panier.component';
 import { LoginComponent } from './login/login.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { ProductComponent } from './product/product.component';
+import {CacheServieService} from "./service/cache-servie.service";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { ProductComponent } from './product/product.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [CacheServieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

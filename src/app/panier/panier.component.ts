@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from "rxjs";
-import {Product} from "../product/mock";
+import {Observable, of} from "rxjs";
+import {basket} from "./mock";
+import {CacheServieService} from "../service/cache-servie.service";
+
+
 
 @Component({
   selector: 'app-panier',
@@ -8,15 +11,17 @@ import {Product} from "../product/mock";
   styleUrls: ['./panier.component.css']
 })
 export class PanierComponent implements OnInit {
-  public basket$ = of(asket
-  constructor() {}
+  public baskets = of(this.cacheService.get())
+  constructor(private cacheService : CacheServieService) {}
 
   ngOnInit(): void {
-    this.getBasketValue()
+
   }
 
   getBasketValue(){
-     // @ts-ignore
-    this.basket$ = of(JSON.parse(localStorage.getItem('productsLocalStorage')))
+
+  }
+  totalLigne(price :number,qte:number){
+    return price * qte
   }
 }

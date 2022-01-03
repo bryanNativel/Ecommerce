@@ -19,21 +19,21 @@
           </thead>
           <tbody>
 
-          <tr>
+          <tr *ngFor="let basket of baskets | async">
             <td class="p-4">
               <div class="media align-items-center">
-                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                <img src="{{basket.pic}}" class="d-block ui-w-40 ui-bordered mr-4" alt="">
                 <div class="media-body">
-                  <a href="#" class="d-block text-dark">Product 1</a>
+                  <a href="#" class="d-block text-dark"></a>
                   <small>
-
-                    <span class="text-muted">Producteur: </span> trucmuche
+                    <span>Produit: </span> {{basket.name}}
+                    <span class="text-muted">Producteur: </span> {{basket.producteur.name}}
                   </small>
                 </div>
               </div>
             </td>
-            <td class="text-right font-weight-semibold align-middle p-4">98.54 euro</td>
-            <td class="align-middle p-4"><input type="text" class="form-control text-center" value="2"></td>
+            <td class="text-right font-weight-semibold align-middle p-4">{{basket.price}} euro</td>
+            <td class="align-middle p-4"><input id="{{basket.id}}" type="text" class="form-control text-center" value="0"></td>
             <td class="text-right font-weight-semibold align-middle p-4">115.1 euro</td>
             <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
           </tr>
@@ -53,7 +53,8 @@
             <div class="text-large"><strong>20 euro</strong></div>
           </div>-->
           <div class="text-right mt-4">
-            <label class="text-muted font-weight-normal m-0">Prix total</label>
+            <label class="te
+           xt-muted font-weight-normal m-0">Prix total</label>
             <div class="text-large"><strong>6457 euro</strong></div>
           </div>
         </div>
