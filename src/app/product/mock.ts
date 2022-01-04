@@ -1,13 +1,12 @@
-import {from} from "rxjs";
-
- export const products : Product[] = [{
+export const products : Product[] = [{
   id: "1",
   name: "Orange",
   stock : 69,
   price : 6 ,
   pic: "../assets/images/fruit/p1.png",
   producteur : { name : "Gervais"},
-  category : "fruit"
+  category : "fruit",
+   qte:1
 },
   {id: "2",
     name: "Banane",
@@ -15,7 +14,8 @@ import {from} from "rxjs";
     price : 3 ,
     pic: "../assets/images/fruit/p5.png",
     producteur : { name : "Gervais"},
-    category : "fruit"
+    category : "fruit",
+    qte:1
   },
    {id: "3",
     name: "Pomme",
@@ -23,21 +23,24 @@ import {from} from "rxjs";
     price : 4 ,
     pic: "../assets/images/fruit/p6.png",
      producteur : { name : "Gervais"},
-    category : "fruit"
+    category : "fruit",
+     qte:1
   },  {id: "4",
     name: "Mangue",
     stock : 6,
     price : 9 ,
     pic: "../assets/images/fruit/p4.png",
      producteur : { name : "Morin"},
-    category : "fruit"
+    category : "fruit",
+     qte:1
   },  {id: "5",
     name: "kiwi",
     stock : 4,
     price : 3 ,
     pic: "../assets/images/fruit/p3.png",
      producteur : { name : "Morin"},
-    category : "fruit"
+    category : "fruit",
+     qte:1
   },
    {id: "6",
     name: "Durian",
@@ -45,7 +48,8 @@ import {from} from "rxjs";
     price : 3 ,
     pic: "../assets/images/fruit/p2.png",
      producteur : { name : "Gervais"},
-    category : "fruit"
+    category : "fruit",
+     qte:1
   },
    {id: "7",
   name: "Poulet",
@@ -53,7 +57,8 @@ import {from} from "rxjs";
   price : 20 ,
   pic: "../assets/images/meat/poulet.png",
      producteur : { name : "Jacques"},
-  category : "meat"
+  category : "meat",
+     qte:1
 },
 {id: "8",
   name: "Boeuf",
@@ -61,21 +66,24 @@ import {from} from "rxjs";
   price : 3 ,
   pic: "../assets/images/meat/boeuf.png",
   producteur : { name : "Jacques"},
-  category : "meat"
+  category : "meat",
+  qte:1
 },  {id: "9",
   name: "Porc",
   stock : 10,
   price : 4 ,
   pic: "../assets/images/meat/porc.png",
      producteur : { name : "Laurent"},
-  category : "meat"
+  category : "meat",
+     qte:1
 }, {id: "10",
   name: "Dorade",
   stock : 10,
   price : 9 ,
   pic: "../assets/images/fish/dorade.png",
      producteur : { name : "Laurent"},
-  category : "fish"
+  category : "fish",
+     qte:1
 },
    {id: "11",
      name: "Saumon",
@@ -83,7 +91,8 @@ import {from} from "rxjs";
      price : 4 ,
      pic: "../assets/images/fish/saumon.png",
      producteur : { name : "Gervais"},
-     category : "fish"
+     category : "fish",
+     qte:1
    },
    {id: "12",
      name: "Thon",
@@ -91,7 +100,8 @@ import {from} from "rxjs";
      price : 4 ,
      pic: "../assets/images/fish/thon.png",
      producteur : { name : "Laurent"},
-     category : "fish"
+     category : "fish",
+     qte:1
    },
    {id: "13",
      name: "Pain au chocolat",
@@ -99,7 +109,8 @@ import {from} from "rxjs";
      price : 1 ,
      pic: "../assets/images/pastry/painAuCho.png",
      producteur : { name : "Laurent"},
-     category : "pastry"
+     category : "pastry",
+     qte:1
    },
    {id: "14",
      name: "Pain au raisin",
@@ -107,7 +118,8 @@ import {from} from "rxjs";
      price : 1 ,
      pic: "../assets/images/pastry/painAuR.png",
      producteur : { name : "Gervais"},
-     category : "pastry"
+     category : "pastry",
+     qte:1
    },
    {id: "15",
      name: "Pain",
@@ -115,7 +127,8 @@ import {from} from "rxjs";
      price : 0.50 ,
      pic: "../assets/images/pastry/pain.png",
      producteur : { name : "Laurent"},
-     category : "pastry"
+     category : "pastry",
+     qte:1
    },
    {id: "16",
      name: "Tulip",
@@ -123,7 +136,8 @@ import {from} from "rxjs";
      price : 1 ,
      pic: "../assets/images/flower/tulip.png",
      producteur : { name : "Laurent"},
-     category : "flower"
+     category : "flower",
+     qte:1
    },
    {id: "17",
      name: "Rose",
@@ -131,7 +145,8 @@ import {from} from "rxjs";
      price : 1 ,
      pic: "../assets/images/flower/rose.png",
      producteur : { name : "Gervais"},
-     category : "flower"
+     category : "flower",
+     qte:1
    },
    {id: "18",
      name: "Muguet",
@@ -139,7 +154,8 @@ import {from} from "rxjs";
      price : 0.50 ,
      pic: "../assets/images/flower/muguet.png",
      producteur : { name : "Laurent"},
-     category : "flower"
+     category : "flower",
+     qte:1
    }
 ]
 
@@ -150,5 +166,6 @@ import {from} from "rxjs";
     stock :number
     price : number
     pic: string
-    producteur : {name : string}
+    producteur : {name : string},
+    qte:number
   }

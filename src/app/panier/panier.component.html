@@ -4,6 +4,7 @@
     <div class="card-header">
       <h2>Mon panier</h2>
     </div>
+    <div *ngIf="alertCommande" class="alert alert-success mt-3" role="alert">Commande validé !</div>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered m-0">
@@ -18,7 +19,6 @@
           </tr>
           </thead>
           <tbody>
-
           <tr *ngFor="let basket of baskets | async">
             <td class="p-4">
               <div class="media align-items-center">
@@ -26,16 +26,19 @@
                 <div class="media-body">
                   <a href="#" class="d-block text-dark"></a>
                   <small>
-                    <span>Produit: </span> {{basket.name}}
+                   <h4> {{basket.name}}</h4>
+
                     <span class="text-muted">Producteur: </span> {{basket.producteur.name}}
                   </small>
                 </div>
               </div>
             </td>
             <td class="text-right font-weight-semibold align-middle p-4">{{basket.price}} euro</td>
-            <td class="align-middle p-4"><input id="{{basket.id}}" type="text" class="form-control text-center" value="0"></td>
-            <td class="text-right font-weight-semibold align-middle p-4">115.1 euro</td>
+            <td class="align-middle p-4"><input type="text" class="form-control text-center" [value]="basket.qte"></td>
+            <td class="text-right font-weight-semibold align-middle p-4">{{totalLigne(basket.qte,basket.price)}} euro </td>
+<!--
             <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
+-->
           </tr>
           </tbody>
         </table>
@@ -43,9 +46,9 @@
       <!-- / Shopping cart table -->
 
       <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
-        <div class="mt-4">
-          <label class="text-muted font-weight-normal">Code Promo</label>
-          <input type="text" placeholder="ABC" class="form-control">
+        <div class=" row mt-4">
+          <label class=" col-12 text-muted font-weight-normal">Code Promo</label>
+          <input type="text" placeholder="ABC" class="col-12 form-control">
         </div>
         <div class="d-flex">
           <!--<div class="text-right mt-4 mr-5">
@@ -55,16 +58,34 @@
           <div class="text-right mt-4">
             <label class="te
            xt-muted font-weight-normal m-0">Prix total</label>
-            <div class="text-large"><strong>6457 euro</strong></div>
+            <div class="text-large"><strong>  {{getTotal()}} euro</strong></div>
           </div>
         </div>
       </div>
 
       <div class="float-right">
         <button type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3">Retour</button>
-        <button type="button"  class="btn btn-lg btn-primary mt-2">Acheter</button>
-      </div>
 
+        <button *ngIf="commande === false" type="button" (click)="buy()" class="btn btn-lg btn-primary mt-2">Commander</button>
+        <button *ngIf="commande === true"  class="btn btn-lg  btn-primary">
+          <span class="spinner-border spinner-border-sm"></span>
+          Chargement...
+        </button>
+      </div>
     </div>
   </div>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<br><br>
+<br>
+<br><br>
+<br>
+<br><br>
+<br>
+<br>
