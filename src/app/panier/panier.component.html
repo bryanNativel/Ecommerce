@@ -1,10 +1,27 @@
-<div class="container px-3 my-5 clearfix">
+<div *ngIf="!checkBasketBool" class="container-fluid mt-100">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body cart">
+          <div class="col-sm-12 empty-cart-cls text-center"> <img src="../assets/images/panier.png" width="130" height="130" class="img-fluid mb-4 mr-3">
+            <h3><strong>Zut ! le panier est vide </strong></h3>
+            <h4>Revient après le shooping !</h4> <button [routerLink]="['/product']" class="btn btn-primary cart-btn-transform m-3" data-abc="true">Acheter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="checkBasketBool" class="container px-3 my-5 clearfix">
   <!-- Shopping cart table -->
   <div class="card">
     <div class="card-header">
       <h2>Mon panier</h2>
     </div>
-    <div *ngIf="alertCommande" class="alert alert-success mt-3" role="alert">Commande validé !</div>
+    <div *ngIf="alerte" class="alert alert-success mt-3" role="alert">Commande validé !</div>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered m-0">
@@ -15,7 +32,9 @@
             <th class="text-right py-3 px-4" style="width: 100px;">Prix</th>
             <th class="text-center py-3 px-4" style="width: 120px;">Quantité</th>
             <th class="text-right py-3 px-4" style="width: 100px;">Total</th>
+<!--
             <th class="text-center align-middle py-3 px-0" style="width: 40px;"><a href="#" class="shop-tooltip float-none text-light" title="" data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a></th>
+-->
           </tr>
           </thead>
           <tbody>
@@ -66,8 +85,8 @@
       <div class="float-right">
         <button type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3">Retour</button>
 
-        <button *ngIf="commande === false" type="button" (click)="buy()" class="btn btn-lg btn-primary mt-2">Commander</button>
-        <button *ngIf="commande === true"  class="btn btn-lg  btn-primary">
+        <button *ngIf="(commande|async) == false " type="button" (click)="buy()" class="btn btn-lg btn-primary mt-2">Commander</button>
+        <button *ngIf="(commande|async)"  class="btn btn-lg  btn-primary">
           <span class="spinner-border spinner-border-sm"></span>
           Chargement...
         </button>

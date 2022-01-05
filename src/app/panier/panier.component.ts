@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable, of} from "rxjs";
-import {basket} from "./mock";
+import { of, timer} from "rxjs";
 import {CacheServieService} from "../service/cache-servie.service";
-
-
+import {Route, Router} from "@angular/router";
 
 @Component({
   selector: 'app-panier',
@@ -12,10 +10,10 @@ import {CacheServieService} from "../service/cache-servie.service";
 })
 export class PanierComponent implements OnInit {
   public baskets = of(this.cacheService.get())
-  public commande = false
-  public alertCommande = false
-  public checkBasketBool : boolean | undefined
-  constructor(private cacheService : CacheServieService) {}
+  public commande = of(false)
+  public alerte  = false
+  public checkBasketBool : boolean | undefined = false
+  constructor(private cacheService : CacheServieService,private route:Router) {}
 
   ngOnInit(): void {
     this.checkBasket()
@@ -30,21 +28,29 @@ export class PanierComponent implements OnInit {
     }
     return sum
   }
+
   buy(){
-    this.commande = true
-    // @ts-ignore
-    setTimeout(this.alerte(),1000)
+    this.commande = of(true)
+    setTimeout(()=>{ this.alert(); },2000);
   }
-  alerte(){
-    this.alertCommande = true
+
+  alert(){
+    this.commande = of(false)
+    this.alerte = true
+    setTimeout(()=>{ this.redirect(); },(1000));
+  }
+
+  redirect(){
     localStorage.clear()
-  }
-  checkBasket(){
-
-
+    this.route.navigate(['product'])
   }
 
   totalLigne(qte: any, price: any){
   return parseInt(qte) * parseInt(price)
+  }
+
+  checkBasket(){
+    this.checkBasketBool = this.cacheService.get() != null;
+
   }
 }
