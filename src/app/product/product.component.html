@@ -7,25 +7,26 @@
         Nos produits
       </h2>
     </div>
-    <ul class="nav justify-content-center">
+    <ul class="nav justify-content-center mt-2">
       <li class="nav-item">
         <button class="nav-link active" (click)="filterProduct('all')" aria-current="page" >Tout</button>
       </li>
       <li class="nav-item">
-        <button class="nav-link" (click)="filterProduct('fruit')" >Fruit et Légume</button>
+        <button class="nav-link" (click)="filterProduct('meat')">Viandes et charcuteries</button>
       </li>
       <li class="nav-item">
-        <button class="nav-link" (click)="filterProduct('meat')">Viande</button>
+        <button class="nav-link" (click)="filterProduct('fish')" tabindex="-1">Poissons frais et produits de la mer</button>
       </li>
       <li class="nav-item">
-        <button class="nav-link" (click)="filterProduct('fish')" tabindex="-1">Poisson</button>
+        <button class="nav-link" (click)="filterProduct('pastry')" tabindex="-1">Boulangeries et pâtisseries</button>
       </li>
       <li class="nav-item">
-        <button class="nav-link" (click)="filterProduct('flower')" tabindex="-1">Fleur</button>
+        <button class="nav-link" (click)="filterProduct('fruit')" >Fruits et Légumes</button>
       </li>
       <li class="nav-item">
-        <button class="nav-link" (click)="filterProduct('pastry')" tabindex="-1">Boulangerie</button>
+        <button class="nav-link" (click)="filterProduct('flower')" tabindex="-1">Fleurs</button>
       </li>
+
     </ul>
     <!--Produit-->
     <div class="row ">
@@ -44,7 +45,8 @@
             </a>
             <div class="price_box">
               <h6 class="price_heading">
-                {{product.price}}<span>€</span>
+                {{product.price}}<span>€</span><p *ngIf="product.category === 'fruit' || product.category === 'meat'|| product.category === 'fish'">Kilo</p>
+                <p *ngIf="product.category === 'flower'|| product.category === 'pastry'">Unité</p>
               </h6>
               <div class="row mt-1">
                 <button type="button" (click)="addBasket(product)" class="btn btn-success">Ajouter</button>

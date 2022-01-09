@@ -24,7 +24,7 @@ export class PanierComponent implements OnInit {
     let sum = 0;
 
     for (let i = 0; i < this.cacheService.get().length; i++) {
-      sum += parseInt(this.cacheService.get()[i].price);
+      sum += parseFloat(this.cacheService.get()[i].price);
     }
     return sum
   }
@@ -46,7 +46,7 @@ export class PanierComponent implements OnInit {
   }
 
   totalLigne(qte: any, price: any){
-  return parseInt(qte) * parseInt(price)
+  return parseFloat(qte) * parseFloat(price)
   }
 
   checkBasket(){
